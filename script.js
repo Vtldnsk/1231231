@@ -52,20 +52,23 @@ var snake = new Snake([{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}], 0);
 
 var apple = {x: 0, y: 0};
 var stones = [];
+var bg;
 
-
+function preload() {
+  bg = loadImage("photo.jpg");
+}
 
 function setup() {
    createCanvas(500, 500); 
   for (let i = 0; i < 5; i++) {
-    stones.push({x: round(random(0, 20)), y: round(random(0, 20))});
+    stones.push({x: round(random(0, 19)), y: round(random(0, 19))});
   }
 
   while (placeApple() != true) {};
 }
 
 function placeApple() {
-  apple = {x: round(random(0, 20)), y: round(random(0, 20))};
+  apple = {x: round(random(0, 19)), y: round(random(0, 19))};
   for (let i = 0; i < stones.length; i++) {
     if (stones[i].x == apple.x && stones[i].y == apple.y) {
       return false;
@@ -76,7 +79,7 @@ function placeApple() {
 }
 
 function draw() {
-  background("green");
+  background(bg);
 // фон картинка
 
   if (gameOver) {
